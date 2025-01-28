@@ -1,6 +1,4 @@
-name= Dockerfile
 FROM ubuntu
-RUN apt update
-RUN apt install apache2 -y
+RUN apt update && apt install -y apache2
 ADD . /var/www/html/
-ENTRYPOINT apachectl -D FOREGROUND
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
