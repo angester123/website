@@ -1,4 +1,6 @@
 FROM ubuntu
-RUN apt update && apt install -y apache2
+RUN apt update
+RUN apt install apache2 -y
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 ADD . /var/www/html/
-ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+CMD ["apache2ctl", "-D", "FOREGROUND"]
