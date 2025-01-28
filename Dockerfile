@@ -1,6 +1,10 @@
 FROM ubuntu
-RUN apt update
-RUN apt install apache2 -y
-ADD . /var/www/html/
-ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
 
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y apache2
+
+# Add website files
+ADD . /var/www/html
+
+# Set Apache to run in foreground
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
