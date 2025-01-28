@@ -6,6 +6,6 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 # Add website content to the container
 ADD . /var/www/html/
 # Expose the default HTTP port
-EXPOSE 80
+EXPOSE 81
 # Run Apache in the foreground to keep the container running
 CMD ["apache2ctl", "-D", "FOREGROUND"]
