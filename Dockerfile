@@ -1,10 +1,13 @@
 FROM ubuntu
 
-# Install necessary dependencies
+# Install Apache and dependencies
 RUN apt-get update && apt-get install -y apache2
 
-# Add website files
+# Add the website content
 ADD . /var/www/html
 
-# Set Apache to run in foreground
-ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+# Expose port 80
+EXPOSE 80
+
+# Start Apache in the foreground
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
