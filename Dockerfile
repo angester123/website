@@ -14,4 +14,4 @@ ADD . /var/www/html
 EXPOSE 81
 
 # Start Apache in the foreground
-ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+CMD ["apachectl", "-D", "FOREGROUND"]
