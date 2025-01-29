@@ -1,13 +1,17 @@
-FROM ubuntu
+# Use Ubuntu as the base image
+FROM ubuntu:latest
 
-# Install Apache and dependencies
-RUN apt-get update && apt-get install -y apache2
+# Update and install Apache
+RUN apt update && apt install apache2 -y
 
-# Add the website content
+# Set the working directory
+WORKDIR /var/www/html
+
+# Copy project files to the container
 ADD . /var/www/html
 
-# Expose port 80
-EXPOSE 80
+# Expose port 80 to allow HTTP traffic
+EXPOSE 81
 
 # Start Apache in the foreground
-ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
